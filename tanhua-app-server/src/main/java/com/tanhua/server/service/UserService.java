@@ -6,7 +6,9 @@ import com.tanhua.commons.constant.RedisConstant;
 import com.tanhua.commons.utils.JwtUtils;
 import com.tanhua.dubbo.api.UserApi;
 import com.tanhua.model.domain.pojo.User;
+import com.tanhua.model.domain.vo.ErrorResult;
 import com.tanhua.model.domain.vo.UserVo;
+import com.tanhua.server.exception.BusinessException;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -27,7 +29,7 @@ public class UserService {
     private SmsTemplate smsTemplate;
 
     @Autowired
-    private RedisTemplate<String,String> redisTemplate;
+    private RedisTemplate<String, String> redisTemplate;
 
     @Value("${tanhua.sms.minute}")
     private String minute;
@@ -35,10 +37,11 @@ public class UserService {
     /**
      * 发送短信验证码
      */
-    public void sendCode(String mobile) {
+    public void sendCode(String mobile) throws Exception {
         //1. 生成随机验证码
         String code = RandomStringUtils.randomNumeric(6);
         //2. 调用阿里云发送验证码
+
         //smsTemplate.sendSms(mobile, code);
         System.out.println("code = " + code);
         //3. 将验证码保存到redis
@@ -56,8 +59,8 @@ public class UserService {
         String redisCode = redisTemplate.opsForValue().get(RedisConstant.CHECK_CODE + mobile);
 
         //2. 校验验证码
-        if(StringUtils.isEmpty(code) || !code.equals(redisCode)) {
-            throw new RuntimeException(CommonConstant.LOGIN_CODE_ERR);
+        if (StringUtils.isEmpty(code) || !code.equals(redisCode)) {
+            throw new BusinessException(ErrorResult.loginError());
         }
         //比对通过, 删除验证码, 选做
         redisTemplate.delete(RedisConstant.CHECK_CODE + mobile);

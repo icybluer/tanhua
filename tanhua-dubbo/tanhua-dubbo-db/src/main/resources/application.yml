@@ -3,15 +3,15 @@ server:
 spring:
   application:
     name: tanhua-dubbo-db
-  datasource: #数据库配置
+  datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/tanhua?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false
-    username: root #数据库账号
-    password: root #数据库密码
+    username: root
+    password: 19981206Lv
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848 #nacos地址，请自行配置
+        server-addr: localhost:8848
 dubbo:
   protocol:
     name: dubbo

@@ -18,7 +18,7 @@ public class SmsTemplateTest {
 
     //测试
     @Test
-    public void testSendSms() {
+    public void testSendSms() throws Exception {
         smsTemplate.sendSms("","4567");
     }
 }
