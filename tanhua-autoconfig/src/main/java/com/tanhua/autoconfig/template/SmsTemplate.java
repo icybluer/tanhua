@@ -16,7 +16,7 @@ public class SmsTemplate {
         this.properties = properties;
     }
 
-    public void sendSms(String mobile, String code) {
+    public void sendSms(String mobile, String code) throws Exception {
         String host = "https://gyytz.market.alicloudapi.com";
         String path = "/sms/smsSend";
         String method = "POST";
@@ -30,14 +30,11 @@ public class SmsTemplate {
         querys.put("templateId", properties.getTemplateId()); //模板
         Map<String, String> bodys = new HashMap<>();
 
-        try {
-            HttpResponse response = HttpUtils.doPost(host, path, method, headers, querys, bodys);
-            System.out.println(response.toString());
-            //获取response的body
-            //System.out.println(EntityUtils.toString(response.getEntity()));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        HttpResponse response = HttpUtils.doPost(host, path, method, headers, querys, bodys);
+        System.out.println(response.toString());
+        //获取response的body
+        //System.out.println(EntityUtils.toString(response.getEntity()));
+
     }
 
 }
