@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,13 +14,14 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class UserInfo extends BasePojo implements Serializable {
 
     /**
      * 由于userinfo表和user表之间是一对一关系
-     *   userInfo的id来源于user表的id
+     * userInfo的id来源于user表的id
      */
-    @TableId(type= IdType.INPUT)
+    @TableId(type = IdType.INPUT)
     private Long id; //用户id
     private String nickname; //昵称
     private String avatar; //用户头像
