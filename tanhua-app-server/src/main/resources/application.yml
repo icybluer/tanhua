@@ -6,16 +6,19 @@ spring:
     name: tanhua-app-server
   redis:  #redis配置
     port: 6379
-    host: localhost
+#    host: localhost
+    host: 192.168.136.160
   cloud:  #nacos配置
     nacos:
       discovery:
-        server-addr: localhost:8848
+#        server-addr: localhost:8848
+        server-addr: 192.168.136.160:8848
 dubbo:    #dubbo配置
   registry:
     address: spring-cloud://localhost
   consumer:
     check: false
+    timeout: 100000
 tanhua:
   sms:    #阿里云短信配置
     appcode:

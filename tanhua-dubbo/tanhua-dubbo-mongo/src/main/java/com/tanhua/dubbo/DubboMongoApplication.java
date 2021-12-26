@@ -7,22 +7,13 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableAsync;
 
-/**
- * @author Administrator
- */
 @SpringBootApplication
-@MapperScan("com.tanhua.dubbo.mapper")
-public class DubboDbApplication {
+@EnableAsync //开启异步处理的支持
+public class DubboMongoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DubboDbApplication.class, args);
-    }
-
-    @Bean
-    public MybatisPlusInterceptor mybatisPlusInterceptor() {
-        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
-        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
-        return interceptor;
+        SpringApplication.run(DubboMongoApplication.class,args);
     }
 }
