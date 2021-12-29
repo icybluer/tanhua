@@ -1,6 +1,6 @@
 package com.tanhua.server.exception;
 
-import com.tanhua.model.domain.vo.ErrorResult;
+import com.tanhua.model.vo.ErrorResult;
 import lombok.Data;
 
 /**

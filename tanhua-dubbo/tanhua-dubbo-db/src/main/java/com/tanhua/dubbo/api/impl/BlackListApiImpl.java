@@ -6,8 +6,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tanhua.dubbo.api.BlackListApi;
 import com.tanhua.dubbo.mapper.BlackListMapper;
 import com.tanhua.dubbo.mapper.UserInfoMapper;
-import com.tanhua.model.domain.pojo.BlackList;
-import com.tanhua.model.domain.pojo.UserInfo;
+import com.tanhua.model.domain.BlackList;
+import com.tanhua.model.domain.UserInfo;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 

@@ -1,9 +1,9 @@
-package com.tanhua.model.domain.dto;
+package com.tanhua.model.dto;
 
 import lombok.Data;
 
 @Data
-public class UserInfoDto {
+public class UserInfoDTO {
     private Long id;
     private String gender;
     private String nickname;

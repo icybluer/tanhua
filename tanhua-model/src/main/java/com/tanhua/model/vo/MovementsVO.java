@@ -1,6 +1,6 @@
-package com.tanhua.model.domain.vo;
+package com.tanhua.model.vo;
 
-import com.tanhua.model.domain.pojo.UserInfo;
+import com.tanhua.model.domain.UserInfo;
 import com.tanhua.model.mongo.Movement;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,7 +15,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MovementsVo implements Serializable {
+public class MovementsVO implements Serializable {
 
     private String id; //动态id
 
@@ -40,8 +40,8 @@ public class MovementsVo implements Serializable {
     private Integer hasLoved; //是否喜欢（1是，0否）
 
 
-    public static MovementsVo init(UserInfo userInfo, Movement item) {
-        MovementsVo vo = new MovementsVo();
+    public static MovementsVO init(UserInfo userInfo, Movement item) {
+        MovementsVO vo = new MovementsVO();
         //设置动态数据
         BeanUtils.copyProperties(item, vo);
         vo.setId(item.getId().toHexString());

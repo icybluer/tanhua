@@ -1,4 +1,4 @@
-package com.tanhua.model.domain.dto;
+package com.tanhua.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class QuestionDto {
+public class QuestionDTO {
     private String content;
 }

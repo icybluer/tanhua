@@ -1,4 +1,4 @@
-package com.tanhua.model.domain.vo;
+package com.tanhua.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class SettingsVo {
+public class SettingsVO {
     private Long id;
     private String strangerQuestion = "";
     private String phone;

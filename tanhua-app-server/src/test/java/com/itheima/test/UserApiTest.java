@@ -1,7 +1,7 @@
 package com.itheima.test;
 
 import com.tanhua.dubbo.api.UserApi;
-import com.tanhua.model.domain.pojo.User;
+import com.tanhua.model.domain.User;
 import com.tanhua.server.AppServerApplication;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.junit.Test;

@@ -1,19 +1,19 @@
 package com.itheima.test;
 
-import com.tanhua.model.domain.dto.UserDto;
+import com.tanhua.model.dto.UserDTO;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class StreamTest {
     public static void main(String[] args) {
-        List<UserDto> dtos = new ArrayList<>();
+        List<UserDTO> dtos = new ArrayList<>();
         /*for (int i = 0; i < 10; i++) {
-            UserDto dto = new UserDto();
+            UserDTO dto = new UserDTO();
             dto.setPhone(""+i+i+i+i+i+i+i+i+i+i);
             dtos.add(dto);
         }
-        for (UserDto dto : dtos) {
+        for (UserDTO dto : dtos) {
             System.out.println(dto);
         }
         dtos = null;*/

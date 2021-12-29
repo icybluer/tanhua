@@ -1,6 +1,6 @@
 package com.tanhua.dubbo.api;
 
-import com.tanhua.model.domain.pojo.User;
+import com.tanhua.model.domain.User;
 
 public interface UserApi {
     /**

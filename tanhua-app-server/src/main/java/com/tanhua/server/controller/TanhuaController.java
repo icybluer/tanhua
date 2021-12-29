@@ -1,8 +1,8 @@
 package com.tanhua.server.controller;
 
-import com.tanhua.model.domain.dto.RecommendUserDto;
-import com.tanhua.model.domain.vo.PageResult;
-import com.tanhua.model.domain.vo.TodayBest;
+import com.tanhua.model.dto.RecommendUserDTO;
+import com.tanhua.model.vo.PageResult;
+import com.tanhua.model.vo.TodayBest;
 import com.tanhua.server.service.TanhuaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +23,7 @@ public class TanhuaController {
     }
 
     @GetMapping("/recommendation")
-    public ResponseEntity recommendation(RecommendUserDto dto) {
+    public ResponseEntity recommendation(RecommendUserDTO dto) {
         PageResult vo = tanhuaService.recommendation(dto);
         return ResponseEntity.ok(vo);
     }

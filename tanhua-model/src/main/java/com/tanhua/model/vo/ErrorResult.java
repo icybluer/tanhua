@@ -1,4 +1,4 @@
-package com.tanhua.model.domain.vo;
+package com.tanhua.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

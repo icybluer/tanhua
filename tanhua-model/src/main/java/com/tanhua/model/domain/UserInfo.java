@@ -1,13 +1,25 @@
-package com.tanhua.model.domain.vo;
+package com.tanhua.model.domain;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserInfoVo {
+@Builder
+public class UserInfo extends BasePojo implements Serializable {
+
+    /**
+     * 由于userinfo表和user表之间是一对一关系
+     * userInfo的id来源于user表的id
+     */
+    @TableId(type = IdType.INPUT)
     private Long id; //用户id
     private String nickname; //昵称
     private String avatar; //用户头像
@@ -19,4 +31,6 @@ public class UserInfoVo {
     private String education; //学历
     private String profession; //行业
     private Integer marriage; //婚姻状态
+    private String tags; //用户标签：多个用逗号分隔
+    private String coverPic; // 封面图片
 }

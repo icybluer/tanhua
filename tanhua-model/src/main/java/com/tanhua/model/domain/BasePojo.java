@@ -1,4 +1,4 @@
-package com.tanhua.model.domain.pojo;
+package com.tanhua.model.domain;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;

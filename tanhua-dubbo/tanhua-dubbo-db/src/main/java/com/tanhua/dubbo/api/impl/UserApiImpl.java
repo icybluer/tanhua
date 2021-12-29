@@ -3,7 +3,7 @@ package com.tanhua.dubbo.api.impl;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.tanhua.dubbo.api.UserApi;
 import com.tanhua.dubbo.mapper.UserMapper;
-import com.tanhua.model.domain.pojo.User;
+import com.tanhua.model.domain.User;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 

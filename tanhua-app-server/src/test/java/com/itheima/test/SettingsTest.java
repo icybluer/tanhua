@@ -2,8 +2,8 @@ package com.itheima.test;
 
 import com.github.dozermapper.core.Mapper;
 import com.tanhua.dubbo.api.SettingsApi;
-import com.tanhua.model.domain.pojo.Settings;
-import com.tanhua.model.domain.vo.SettingsVo;
+import com.tanhua.model.domain.Settings;
+import com.tanhua.model.vo.SettingsVO;
 import com.tanhua.server.AppServerApplication;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.junit.Test;
@@ -23,10 +23,10 @@ public class SettingsTest {
 
     @Test
     public void settingsTest(){
-        SettingsVo vo = new SettingsVo();
+        SettingsVO vo = new SettingsVO();
         Settings settings = settingsApi.findByUserId(106L);
         if (settings != null) {
-            vo = mapper.map(settings,SettingsVo.class);
+            vo = mapper.map(settings, SettingsVO.class);
         }
         System.out.println(vo);
     }

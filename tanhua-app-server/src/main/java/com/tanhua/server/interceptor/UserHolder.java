@@ -1,6 +1,6 @@
 package com.tanhua.server.interceptor;
 
-import com.tanhua.model.domain.pojo.User;
+import com.tanhua.model.domain.User;
 
 /**
  * @author Administrator
