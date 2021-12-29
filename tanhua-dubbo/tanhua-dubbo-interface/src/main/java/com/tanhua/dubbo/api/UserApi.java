@@ -18,4 +18,6 @@ public interface UserApi {
      * @return 新用户ID
      */
     Long save(User user);
+
+    void update(User user);
 }
