@@ -2,11 +2,8 @@ package com.tanhua.server.interceptor;
 
 
 import com.tanhua.commons.utils.JwtUtils;
-import com.tanhua.model.domain.pojo.User;
+import com.tanhua.model.domain.User;
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwt;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;

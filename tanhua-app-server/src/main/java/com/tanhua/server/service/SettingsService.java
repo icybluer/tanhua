@@ -6,13 +6,13 @@ import com.tanhua.commons.constant.CommonConstant;
 import com.tanhua.dubbo.api.BlackListApi;
 import com.tanhua.dubbo.api.QuestionApi;
 import com.tanhua.dubbo.api.SettingsApi;
-import com.tanhua.model.domain.dto.QuestionDto;
-import com.tanhua.model.domain.dto.SettingsDto;
-import com.tanhua.model.domain.pojo.Question;
-import com.tanhua.model.domain.pojo.Settings;
-import com.tanhua.model.domain.pojo.UserInfo;
-import com.tanhua.model.domain.vo.PageResult;
-import com.tanhua.model.domain.vo.SettingsVo;
+import com.tanhua.model.dto.QuestionDTO;
+import com.tanhua.model.dto.SettingsDTO;
+import com.tanhua.model.domain.Question;
+import com.tanhua.model.domain.Settings;
+import com.tanhua.model.domain.UserInfo;
+import com.tanhua.model.vo.PageResult;
+import com.tanhua.model.vo.SettingsVO;
 import com.tanhua.server.interceptor.UserHolder;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +32,8 @@ public class SettingsService {
     /**
      * 用户通用设置-读取
      */
-    public SettingsVo settings() {
-        SettingsVo vo = new SettingsVo();
+    public SettingsVO settings() {
+        SettingsVO vo = new SettingsVO();
         //获取当前用户id
         Long userId = UserHolder.getUserId();
         vo.setId(userId);
@@ -58,7 +58,7 @@ public class SettingsService {
     /**
      * 设置陌生人问题 - 保存
      */
-    public void setQuestion(QuestionDto dto) {
+    public void setQuestion(QuestionDTO dto) {
         //1. 获取当前用户的id，
         Long userId = UserHolder.getUserId();
         String content = dto.getContent();
@@ -83,7 +83,7 @@ public class SettingsService {
     /**
      * 通知设置 - 保存
      */
-    public void setNotifications(SettingsDto dto) {
+    public void setNotifications(SettingsDTO dto) {
         //1. 获取当前的用户id
         Long userId = UserHolder.getUserId();
         //2. 将数据保存至数据库

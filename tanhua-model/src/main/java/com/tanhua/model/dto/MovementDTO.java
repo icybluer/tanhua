@@ -1,9 +1,9 @@
-package com.tanhua.model.domain.dto;
+package com.tanhua.model.dto;
 
 import lombok.Data;
 
 @Data
-public class MovementDto {
+public class MovementDTO {
     private String textContent;
     private String location;
     private String longitude;

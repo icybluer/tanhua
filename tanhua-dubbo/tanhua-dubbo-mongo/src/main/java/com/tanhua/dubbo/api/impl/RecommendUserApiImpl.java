@@ -2,17 +2,13 @@ package com.tanhua.dubbo.api.impl;
 
 import cn.hutool.core.collection.CollUtil;
 import com.tanhua.dubbo.api.RecommendUserApi;
-import com.tanhua.model.domain.dto.RecommendUserDto;
 import com.tanhua.model.mongo.RecommendUser;
 //import com.tanhua.model.mongo.UserLike;
-import com.tanhua.model.domain.vo.PageResult;
+import com.tanhua.model.vo.PageResult;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.aggregation.Aggregation;
-import org.springframework.data.mongodb.core.aggregation.AggregationResults;
-import org.springframework.data.mongodb.core.aggregation.TypedAggregation;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 

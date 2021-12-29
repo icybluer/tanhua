@@ -4,13 +4,12 @@ import com.github.dozermapper.core.Mapper;
 import com.tanhua.autoconfig.template.AipFaceTemplate;
 import com.tanhua.autoconfig.template.OssTemplate;
 import com.tanhua.dubbo.api.UserInfoApi;
-import com.tanhua.model.domain.dto.UserInfoDto;
-import com.tanhua.model.domain.pojo.UserInfo;
-import com.tanhua.model.domain.vo.ErrorResult;
-import com.tanhua.model.domain.vo.UserInfoVo;
+import com.tanhua.model.dto.UserInfoDTO;
+import com.tanhua.model.domain.UserInfo;
+import com.tanhua.model.vo.ErrorResult;
+import com.tanhua.model.vo.UserInfoVO;
 import com.tanhua.server.exception.BusinessException;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,7 +27,7 @@ public class UserInfoService {
     /**
      * 首次登录完善资料
      */
-    public void save(UserInfoDto dto) {
+    public void save(UserInfoDTO dto) {
         UserInfo userInfo = mapper.map(dto, UserInfo.class);
         userInfoApi.save(userInfo);
     }
@@ -58,12 +57,12 @@ public class UserInfoService {
         userInfoApi.update(userInfo);
     }
 
-    public UserInfoVo findById(Long id) {
+    public UserInfoVO findById(Long id) {
         UserInfo userInfo = userInfoApi.findById(id);
-        return mapper.map(userInfo, UserInfoVo.class);
+        return mapper.map(userInfo, UserInfoVO.class);
     }
 
-    public void updateUserInfo(UserInfoDto dto) {
+    public void updateUserInfo(UserInfoDTO dto) {
         UserInfo userInfo = mapper.map(dto, UserInfo.class);
         userInfoApi.update(userInfo);
     }

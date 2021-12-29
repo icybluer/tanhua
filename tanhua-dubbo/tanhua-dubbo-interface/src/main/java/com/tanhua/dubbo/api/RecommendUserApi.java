@@ -1,8 +1,7 @@
 package com.tanhua.dubbo.api;
 
-import com.tanhua.model.domain.dto.RecommendUserDto;
 import com.tanhua.model.mongo.RecommendUser;
-import com.tanhua.model.domain.vo.PageResult;
+import com.tanhua.model.vo.PageResult;
 
 import java.util.List;
 import java.util.Map;

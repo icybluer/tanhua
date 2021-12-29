@@ -1,9 +1,9 @@
-package com.tanhua.model.domain.dto;
+package com.tanhua.model.dto;
 
 import lombok.Data;
 
 @Data
-public class UserDto {
+public class UserDTO {
     private String phone;
     private String verificationCode;
 }

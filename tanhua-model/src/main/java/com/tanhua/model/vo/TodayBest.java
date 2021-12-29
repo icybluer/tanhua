@@ -1,6 +1,6 @@
-package com.tanhua.model.domain.vo;
+package com.tanhua.model.vo;
 
-import com.tanhua.model.domain.pojo.UserInfo;
+import com.tanhua.model.domain.UserInfo;
 import com.tanhua.model.mongo.RecommendUser;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

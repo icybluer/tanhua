@@ -1,4 +1,4 @@
-package com.tanhua.model.domain.pojo;
+package com.tanhua.model.domain;
 
 import lombok.Data;
 

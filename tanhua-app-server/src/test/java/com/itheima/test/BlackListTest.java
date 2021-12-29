@@ -3,7 +3,7 @@ package com.itheima.test;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.tanhua.dubbo.api.BlackListApi;
-import com.tanhua.model.domain.pojo.UserInfo;
+import com.tanhua.model.domain.UserInfo;
 import com.tanhua.server.AppServerApplication;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.junit.Test;

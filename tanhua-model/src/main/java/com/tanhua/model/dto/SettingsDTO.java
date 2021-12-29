@@ -1,9 +1,9 @@
-package com.tanhua.model.domain.dto;
+package com.tanhua.model.dto;
 
 import lombok.Data;
 
 @Data
-public class SettingsDto {
+public class SettingsDTO {
     private Boolean likeNotification;
     private Boolean pinglunNotification;
     private Boolean gonggaoNotification;

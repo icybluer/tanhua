@@ -1,10 +1,10 @@
 package com.tanhua.server.controller;
 
-import com.tanhua.model.domain.dto.UserDto;
-import com.tanhua.model.domain.dto.UserInfoDto;
-import com.tanhua.model.domain.vo.ErrorResult;
-import com.tanhua.model.domain.vo.UserInfoVo;
-import com.tanhua.model.domain.vo.UserVo;
+import com.tanhua.model.dto.UserDTO;
+import com.tanhua.model.dto.UserInfoDTO;
+import com.tanhua.model.vo.ErrorResult;
+import com.tanhua.model.vo.UserInfoVO;
+import com.tanhua.model.vo.UserVO;
 import com.tanhua.server.exception.BusinessException;
 import com.tanhua.server.interceptor.UserHolder;
 import com.tanhua.server.service.UserInfoService;
@@ -27,7 +27,7 @@ public class UserController {
      * 用户登录-发送验证码
      */
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody UserDto dto) {
+    public ResponseEntity login(@RequestBody UserDTO dto) {
         try {
             //1. 获取手机号
             String phone = dto.getPhone();
@@ -44,9 +44,9 @@ public class UserController {
      * 校验登录
      */
     @PostMapping("/loginVerification")
-    public ResponseEntity loginVerification(@RequestBody UserDto dto) {
+    public ResponseEntity loginVerification(@RequestBody UserDTO dto) {
         //1 调用userService完成用户登录
-        UserVo userVo = userService.loginVerification(dto.getPhone(), dto.getVerificationCode());
+        UserVO userVo = userService.loginVerification(dto.getPhone(), dto.getVerificationCode());
         //2 构造返回
         return ResponseEntity.ok(userVo);
     }
@@ -58,7 +58,7 @@ public class UserController {
      * 首次登录完善资料
      */
     @PostMapping("/loginReginfo")
-    public ResponseEntity loginReginfo(@RequestBody UserInfoDto dto) {
+    public ResponseEntity loginReginfo(@RequestBody UserInfoDTO dto) {
         //1. 从token获取当前用户id
         Long id = UserHolder.getUserId();
         //2. 保存用户信息到数据库
@@ -84,26 +84,4 @@ public class UserController {
         return ResponseEntity.ok(null);
     }
 
-    /**
-     * 用户资料读取
-     */
-    @GetMapping
-    public ResponseEntity userInfo(Long id) {
-        //2. 根据id查询用户详细信息，若id为空，则查询当前用户
-        id = id == null ? UserHolder.getUserId() : id;
-        UserInfoVo vo = userInfoService.findById(id);
-        return ResponseEntity.ok(vo);
-    }
-
-    /**
-     * 修改用户资料
-     */
-    @PutMapping
-    public ResponseEntity updateUserInfo(@RequestBody UserInfoDto dto) {
-        //从token获取用户id，根据id修改用户详细信息
-        Long id = UserHolder.getUserId();
-        dto.setId(id);
-        userInfoService.updateUserInfo(dto);
-        return ResponseEntity.ok(null);
-    }
 }

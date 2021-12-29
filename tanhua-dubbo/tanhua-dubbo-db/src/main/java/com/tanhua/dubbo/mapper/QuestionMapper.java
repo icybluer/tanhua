@@ -1,7 +1,7 @@
 package com.tanhua.dubbo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.tanhua.model.domain.pojo.Question;
+import com.tanhua.model.domain.Question;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

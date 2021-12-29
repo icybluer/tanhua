@@ -1,6 +1,6 @@
 package com.tanhua.dubbo.api;
 
-import com.tanhua.model.domain.pojo.Question;
+import com.tanhua.model.domain.Question;
 
 public interface QuestionApi {
     Question findByUserId(Long userId);

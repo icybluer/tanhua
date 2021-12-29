@@ -1,13 +1,12 @@
 package com.tanhua.server.service;
 
 import com.tanhua.autoconfig.template.SmsTemplate;
-import com.tanhua.commons.constant.CommonConstant;
-import com.tanhua.commons.constant.RedisConstant;
+import com.tanhua.commons.constant.Constants;
 import com.tanhua.commons.utils.JwtUtils;
 import com.tanhua.dubbo.api.UserApi;
-import com.tanhua.model.domain.pojo.User;
-import com.tanhua.model.domain.vo.ErrorResult;
-import com.tanhua.model.domain.vo.UserVo;
+import com.tanhua.model.domain.User;
+import com.tanhua.model.vo.ErrorResult;
+import com.tanhua.model.vo.UserVO;
 import com.tanhua.server.exception.BusinessException;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -45,7 +44,7 @@ public class UserService {
         //smsTemplate.sendSms(mobile, code);
         System.out.println("code = " + code);
         //3. 将验证码保存到redis
-        redisTemplate.opsForValue().set(RedisConstant.CHECK_CODE + mobile, code, Duration.ofMinutes(Long.parseLong(minute)));
+        redisTemplate.opsForValue().set(Constants.SMS_CODE + mobile, code, Duration.ofMinutes(Long.parseLong(minute)));
     }
 
     @DubboReference
@@ -54,16 +53,16 @@ public class UserService {
     /**
      * 登录校验
      */
-    public UserVo loginVerification(String mobile, String code) {
+    public UserVO loginVerification(String mobile, String code) {
         //1. 从Redis中获取验证码
-        String redisCode = redisTemplate.opsForValue().get(RedisConstant.CHECK_CODE + mobile);
+        String redisCode = redisTemplate.opsForValue().get(Constants.SMS_CODE + mobile);
 
         //2. 校验验证码
         if (StringUtils.isEmpty(code) || !code.equals("123456")) {
             throw new BusinessException(ErrorResult.loginError());
         }
         //比对通过, 删除验证码, 选做
-        redisTemplate.delete(RedisConstant.CHECK_CODE + mobile);
+        redisTemplate.delete(Constants.SMS_CODE + mobile);
 
         //3. 判断用户是否注册
         boolean isNew = false;
@@ -84,7 +83,7 @@ public class UserService {
         String token = JwtUtils.getToken(tokenMap);
 
         //5. 封装数据返回
-        return UserVo.builder()
+        return UserVO.builder()
                 .isNew(isNew)
                 .token(token)
                 .build();

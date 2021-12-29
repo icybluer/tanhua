@@ -1,12 +1,9 @@
 package com.tanhua.dubbo.api;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.tanhua.model.domain.dto.RecommendUserDto;
-import com.tanhua.model.domain.pojo.UserInfo;
-import com.tanhua.model.domain.vo.PageResult;
+import com.tanhua.model.domain.UserInfo;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 public interface UserInfoApi {

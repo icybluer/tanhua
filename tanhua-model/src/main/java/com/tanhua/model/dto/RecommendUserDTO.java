@@ -1,4 +1,4 @@
-package com.tanhua.model.domain.dto;
+package com.tanhua.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class RecommendUserDto implements Serializable {
+public class RecommendUserDTO implements Serializable {
     private Integer page = 1; //当前页数
     private Integer pagesize = 10; //页尺寸
     private String gender; //性别 man woman

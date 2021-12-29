@@ -1,14 +1,11 @@
 package com.tanhua.server.service;
 
-import cn.hutool.core.collection.CollUtil;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tanhua.dubbo.api.RecommendUserApi;
 import com.tanhua.dubbo.api.UserInfoApi;
-import com.tanhua.model.domain.dto.RecommendUserDto;
-import com.tanhua.model.domain.pojo.UserInfo;
-import com.tanhua.model.domain.vo.PageResult;
-import com.tanhua.model.domain.vo.TodayBest;
+import com.tanhua.model.dto.RecommendUserDTO;
+import com.tanhua.model.domain.UserInfo;
+import com.tanhua.model.vo.PageResult;
+import com.tanhua.model.vo.TodayBest;
 import com.tanhua.model.mongo.RecommendUser;
 import com.tanhua.server.interceptor.UserHolder;
 import org.apache.dubbo.config.annotation.DubboReference;
@@ -45,7 +42,7 @@ public class TanhuaService {
         return vo;
     }
 
-    public PageResult recommendation(RecommendUserDto dto) {
+    public PageResult recommendation(RecommendUserDTO dto) {
         //1. 获取当前用户的id
         Long userId = UserHolder.getUserId();
 

@@ -1,6 +1,6 @@
 package com.tanhua.dubbo.api;
 
-import com.tanhua.model.domain.pojo.Settings;
+import com.tanhua.model.domain.Settings;
 
 public interface SettingsApi {
     Settings findByUserId(Long userId);
