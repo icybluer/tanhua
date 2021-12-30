@@ -34,4 +34,22 @@ public class CommentController {
         Integer commentCount = commentService.publishComment(dto);
         return ResponseEntity.ok(commentCount);
     }
+
+    /**
+     * 评论-点赞
+     */
+    @GetMapping("/{id}/like")
+    public ResponseEntity likeComment(@PathVariable("id") String commentId) {
+        Integer likeCount = commentService.likeComment(commentId);
+        return ResponseEntity.ok(likeCount);
+    }
+
+    /**
+     * 评论-取消点赞
+     */
+    @GetMapping("/{id}/dislike")
+    public ResponseEntity dislikeComment(@PathVariable("id") String commentId) {
+        Integer likeCount = commentService.dislikeComment(commentId);
+        return ResponseEntity.ok(likeCount);
+    }
 }

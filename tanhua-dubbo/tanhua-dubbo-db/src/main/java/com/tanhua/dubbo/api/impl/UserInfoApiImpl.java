@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tanhua.dubbo.api.UserInfoApi;
 import com.tanhua.dubbo.mapper.UserInfoMapper;
+import com.tanhua.model.domain.BasePojo;
 import com.tanhua.model.domain.UserInfo;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,7 @@ public class UserInfoApiImpl implements UserInfoApi {
                 .in(UserInfo::getId,ids)
                 .eq(userInfo.getGender() != null, UserInfo::getGender, userInfo.getGender())
                 .eq(userInfo.getEducation() != null, UserInfo::getEducation, userInfo.getEducation())
-                .eq(userInfo.getCity() != null, UserInfo::getCity, userInfo.getCity())
+                .like(userInfo.getCity() != null, UserInfo::getCity, userInfo.getCity())
                 .lt(userInfo.getAge() != null, UserInfo::getAge, userInfo.getAge())
                 .like(userInfo.getNickname() != null, UserInfo::getNickname, userInfo.getNickname());
         return userInfoMapper.selectList(wrapper);
@@ -58,7 +59,8 @@ public class UserInfoApiImpl implements UserInfoApi {
         LambdaQueryWrapper<UserInfo> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(userInfo.getGender() != null, UserInfo::getGender, userInfo.getGender())
                 .lt(userInfo.getAge() != null, UserInfo::getAge, userInfo.getGender())
-                .like(userInfo.getNickname() != null, UserInfo::getNickname, userInfo.getNickname());
+                .like(userInfo.getNickname() != null, UserInfo::getNickname, userInfo.getNickname())
+                .in(UserInfo::getId,ids);
         //查询满足条件的数据，并分页
         userInfoMapper.selectPage(pageInfo, wrapper);
         //返回需要的数据

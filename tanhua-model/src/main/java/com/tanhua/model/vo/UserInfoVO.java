@@ -13,7 +13,7 @@ public class UserInfoVO {
     private String avatar; //用户头像
     private String birthday; //生日
     private String gender; //性别
-    private Integer age; //年龄
+    private String age; //年龄
     private String city; //城市
     private String income; //收入
     private String education; //学历

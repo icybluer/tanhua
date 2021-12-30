@@ -160,7 +160,7 @@ public class MovementService {
         // 获取当前用户id
         Long userId = UserHolder.getUserId();
         // 查询用户是否已点赞
-        Comment comment = commentApi.hasComment(userId, movementId, CommentType.LIKE.getType());
+        Comment comment = commentApi.getComment(userId, movementId, CommentType.LIKE.getType());
         if (comment != null) {
             return movementApi.findById(movementId).getLikeCount();
         }
@@ -183,7 +183,7 @@ public class MovementService {
         // 获取当前用户id
         Long userId = UserHolder.getUserId();
         // 查询用户是否已点赞
-        Comment comment = commentApi.hasComment(userId, movementId, CommentType.LIKE.getType());
+        Comment comment = commentApi.getComment(userId, movementId, CommentType.LIKE.getType());
         if (comment == null) {
             return movementApi.findById(movementId).getLikeCount();
         }
@@ -202,7 +202,7 @@ public class MovementService {
         // 获取当前用户id
         Long userId = UserHolder.getUserId();
         // 查询用户是否已喜欢
-        Comment comment = commentApi.hasComment(userId, movementId, CommentType.LOVE.getType());
+        Comment comment = commentApi.getComment(userId, movementId, CommentType.LOVE.getType());
         if (comment != null){
             return movementApi.findById(movementId).getLoveCount();
         }
@@ -226,7 +226,7 @@ public class MovementService {
         // 获取当前用户id
         Long userId = UserHolder.getUserId();
         // 查询用户是否已点赞
-        Comment comment = commentApi.hasComment(userId, movementId, CommentType.LOVE.getType());
+        Comment comment = commentApi.getComment(userId, movementId, CommentType.LOVE.getType());
         if (comment == null) {
             return movementApi.findById(movementId).getLoveCount();
         }

@@ -18,6 +18,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import java.security.Key;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -54,6 +55,14 @@ public class CommentService {
         List<CommentVo> vos = commentList.stream()
                 .filter(comment -> userInfoMap.get(comment.getUserId()) != null)
                 .map(comment -> CommentVo.init(userInfoMap.get(comment.getUserId()), comment))
+                .peek(commentVo -> {
+                    String key = Constants.MOVEMENTS_INTERACT_KEY + commentVo.getId();
+                    String hashKey = Constants.COMMENT_LIKE_HASHKEY + UserHolder.getUserId();
+                    Boolean hasLike = redisTemplate.opsForHash().hasKey(key, hashKey);
+                    if (hasLike) {
+                        commentVo.setHasLiked(1);
+                    }
+                })
                 .collect(Collectors.toList());
         // 封装分页结果
         return new PageResult(page, pagesize, 0L, vos);
@@ -69,5 +78,44 @@ public class CommentService {
         dto.setCommentType(CommentType.COMMENT.getType());
         // 调用api
         return commentApi.save(dto);
+    }
+
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+    public Integer likeComment(String commentId) {
+        // 获取当前用户id
+        Long userId = UserHolder.getUserId();
+        // 查询用户是否点赞
+        String key = Constants.MOVEMENTS_INTERACT_KEY + commentId;
+        String hashKey = Constants.COMMENT_LIKE_HASHKEY + userId;
+        Boolean hasLike = redisTemplate.opsForHash().hasKey(key, hashKey);
+        if (hasLike) {
+            // 已点赞，查询评论，返回点赞数
+            return commentApi.getComment(commentId).getLikeCount();
+        }
+        // 未点赞，增加点赞数
+        Integer likeCount = commentApi.likeComment(commentId);
+        // redis中保存点赞状态
+        redisTemplate.opsForHash().put(key, hashKey, "1");
+        return likeCount;
+    }
+
+    public Integer dislikeComment(String commentId) {
+        // 获取当前用户id
+        Long userId = UserHolder.getUserId();
+        // 查询用户是否点赞
+        String key = Constants.MOVEMENTS_INTERACT_KEY + commentId;
+        String hashKey = Constants.COMMENT_LIKE_HASHKEY + userId;
+        Boolean hasLike = redisTemplate.opsForHash().hasKey(key, hashKey);
+        if (!hasLike) {
+            // 未点赞，查询评论，返回点赞数
+            return commentApi.getComment(commentId).getLikeCount();
+        }
+        // 已点赞，减少点赞数
+        Integer likeCount = commentApi.dislikeComment(commentId);
+        // 移除redis中的点赞状态
+        redisTemplate.opsForHash().delete(key, hashKey);
+        return likeCount;
     }
 }

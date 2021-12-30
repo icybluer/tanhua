@@ -15,4 +15,6 @@ public interface RecommendUserApi {
     Map<Long, RecommendUser> queryRecommendUserMap(Long toUserId);
 
     PageResult queryRecommendUserList(Integer page, Integer pagesize, Long toUserId);
+
+    RecommendUser getRecommendUser(Long toUserId, Long userId);
 }

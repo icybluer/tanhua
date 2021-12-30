@@ -11,7 +11,13 @@ public interface CommentApi {
 
     Integer save(CommentDTO dto);
 
-    Comment hasComment(Long userId, String movementId, Integer commentType);
+    Comment getComment(Long userId, String movementId, Integer commentType);
 
     Integer delete(Long userId, String movementId, Integer commentType);
+
+    Comment getComment(String commentId);
+
+    Integer likeComment(String commentId);
+
+    Integer dislikeComment(String commentId);
 }

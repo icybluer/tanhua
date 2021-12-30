@@ -7,6 +7,8 @@ import com.tanhua.model.domain.User;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 /**
  * @author Administrator
  */
@@ -25,5 +27,15 @@ public class UserApiImpl implements UserApi {
     public Long save(User user) {
         userMapper.insert(user);
         return user.getId();
+    }
+
+    @Override
+    public void update(User user) {
+        userMapper.updateById(user);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userMapper.selectAll();
     }
 }

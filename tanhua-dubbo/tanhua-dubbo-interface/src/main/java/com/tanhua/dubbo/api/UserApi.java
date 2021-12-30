@@ -2,6 +2,8 @@ package com.tanhua.dubbo.api;
 
 import com.tanhua.model.domain.User;
 
+import java.util.List;
+
 public interface UserApi {
     /**
      * 根据手机号查询用户信息
@@ -18,4 +20,8 @@ public interface UserApi {
      * @return 新用户ID
      */
     Long save(User user);
+
+    void update(User user);
+
+    List<User> findAll();
 }
