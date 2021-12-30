@@ -3,11 +3,11 @@ server:
 spring:
   application:
     name: tanhua-dubbo-mongo
-  cloud:
+  cloud:  #nacos配置
     nacos:
       discovery:
         server-addr: 192.168.136.160:8848
-  data:
+  data:   #mongodb配置
     mongodb:
       uri: mongodb://192.168.136.160:27017/tanhua
 dubbo:

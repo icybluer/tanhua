@@ -70,7 +70,7 @@ public class CommentApiImpl implements CommentApi {
     }
 
     @Override
-    public Comment hasComment(Long userId, String movementId, Integer commentType) {
+    public Comment getComment(Long userId, String movementId, Integer commentType) {
         Criteria criteria = Criteria.where("userId").is(userId)
                 .and("publishId").is(new ObjectId(movementId))
                 .and("commentType").is(commentType);
@@ -108,5 +108,34 @@ public class CommentApiImpl implements CommentApi {
         Movement modify = mongoTemplate.findAndModify(query, update, options, Movement.class);
         // 获取最新的评论数量，并返回
         return modify.statisCount(commentType);
+    }
+
+    @Override
+    public Comment getComment(String commentId) {
+        Criteria criteria = Criteria.where("id").is(new ObjectId(commentId));
+        Query query = Query.query(criteria);
+        return mongoTemplate.findOne(query, Comment.class);
+    }
+
+    @Override
+    public Integer likeComment(String commentId) {
+        Query query = Query.query(Criteria.where("id").is(new ObjectId(commentId)));
+        Update update = new Update();
+        update.inc("likeCount", 1);
+        FindAndModifyOptions options = new FindAndModifyOptions();
+        options.returnNew(true);//获取更新后的最新数据
+        Comment comment = mongoTemplate.findAndModify(query, update, options, Comment.class);
+        return comment.getLikeCount();
+    }
+
+    @Override
+    public Integer dislikeComment(String commentId) {
+        Query query = Query.query(Criteria.where("id").is(new ObjectId(commentId)));
+        Update update = new Update();
+        update.inc("likeCount", -1);
+        FindAndModifyOptions options = new FindAndModifyOptions();
+        options.returnNew(true);//获取更新后的最新数据
+        Comment comment = mongoTemplate.findAndModify(query, update, options, Comment.class);
+        return comment.getLikeCount();
     }
 }

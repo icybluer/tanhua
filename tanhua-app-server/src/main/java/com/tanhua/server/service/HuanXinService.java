@@ -16,6 +16,6 @@ public class HuanXinService {
         // 获取当前用户id
         Long userId = UserHolder.getUserId();
         // 获取环信用户名
-        return new HuanXinUserVo("hx" + userId, Constants.INIT_PASSWORD);
+        return new HuanXinUserVo(Constants.HX_USER_PREFIX + userId, Constants.INIT_PASSWORD);
     }
 }

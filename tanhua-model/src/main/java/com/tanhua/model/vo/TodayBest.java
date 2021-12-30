@@ -27,7 +27,11 @@ public class TodayBest {
         if (userInfo.getTags() != null) {
             vo.setTags(userInfo.getTags().split(","));
         }
-        vo.setFateValue(recommendUser.getScore().longValue());
+        long fateValue = 0L;
+        if (recommendUser != null) {
+            fateValue = recommendUser.getScore().longValue();
+        }
+        vo.setFateValue(fateValue);
         return vo;
     }
 }

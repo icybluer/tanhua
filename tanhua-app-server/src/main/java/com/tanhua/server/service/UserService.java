@@ -80,7 +80,7 @@ public class UserService {
             isNew = true;
 
             // 注册环信用户
-            String username = "hx" + id;
+            String username = Constants.HX_USER_PREFIX + id;
             String password = Constants.INIT_PASSWORD;
             Boolean result = huanXinTemplate.createUser(username, password);
             if (result) {
